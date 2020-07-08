@@ -18,9 +18,6 @@ passport.serializeUser((user, cb) => {
 passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
-const app = express();
-app.use(cors());
-app.use(passport.initialize());
 
 passport.use(
   new FacebookStrategy(
@@ -35,13 +32,6 @@ passport.use(
       return cb(null, profile);
     }
   )
-);
-app.get("/auth/facebook", passport.authenticate("facebook"));
-app.get(
-  "/auth/facebook/callback",
-  passport.authenticate("facebook", (req, res) => {
-    res.redirect("/profile");
-  })
 );
 
 passport.use(
@@ -58,16 +48,6 @@ passport.use(
     }
   )
 );
-app.get(
-  "/auth/amazon",
-  passport.authenticate("amazon", { scope: ["profile"] })
-);
-app.get(
-  "/auth/amazon/callback",
-  passport.authenticate("amazon", (req, res) => {
-    res.redirect("/profile");
-  })
-);
 
 passport.use(
   new GithubStrategy(
@@ -82,13 +62,6 @@ passport.use(
       return cb(null, profile);
     }
   )
-);
-app.get("/auth/github", passport.authenticate("github"));
-app.get(
-  "/auth/github/callback",
-  passport.authenticate("github", (req, res) => {
-    res.redirect("/profile");
-  })
 );
 
 passport.use(
@@ -105,16 +78,6 @@ passport.use(
     }
   )
 );
-app.get(
-  "/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
-app.get(
-  "/auth/google/callback",
-  passport.authenticate("google", (req, res) => {
-    res.redirect("/profile");
-  })
-);
 
 passport.use(
   new InstagramStrategy(
@@ -129,13 +92,6 @@ passport.use(
       return cb(null, profile);
     }
   )
-);
-app.get("/auth/instagram", passport.authenticate("instagram"));
-app.get(
-  "/auth/instagram/callback",
-  passport.authenticate("instagram", (req, res) => {
-    res.redirect("/profile");
-  })
 );
 
 passport.use(
@@ -152,13 +108,6 @@ passport.use(
     }
   )
 );
-app.get("/auth/spotify", passport.authenticate("spotify"));
-app.get(
-  "/auth/spotify/callback",
-  passport.authenticate("spotify", (req, res) => {
-    res.redirect("/profile");
-  })
-);
 
 passport.use(
   new TwitchStrategy(
@@ -174,10 +123,68 @@ passport.use(
     }
   )
 );
-app.get("/auth/twitch", passport.authenticate("twitch"));
+const app = express();
+app.use(cors());
+app.use(passport.initialize());
+
+app.get("/auth/facebook", passport.authenticate("facebook"));
+app.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", (req, res) => {
+    res.redirect("/profile");
+  })
+);
+
+app.get(
+  "/auth/amazon",
+  passport.authenticate("amazon", { scope: ["profile"] })
+);
+app.get(
+  "/auth/amazon/callback",
+  passport.authenticate("amazon", (req, res) => {
+    res.redirect("/profile");
+  })
+);
+
+app.get("/auth/github", passport.authenticate("github"));
+app.get(
+  "/auth/github/callback",
+  passport.authenticate("github", (req, res) => {
+    res.redirect("/profile");
+  })
+);
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", (req, res) => {
+    res.redirect("/profile");
+  })
+);
+
+app.get("/auth/instagram", passport.authenticate("instagram"));
+app.get(
+  "/auth/instagram/callback",
+  passport.authenticate("instagram", (req, res) => {
+    res.redirect("/profile");
+  })
+);
+
+app.get("/auth/spotify", passport.authenticate("spotify"));
+app.get(
+  "/auth/spotify/callback",
+  passport.authenticate("spotify", (req, res) => {
+    res.redirect("/profile");
+  })
+);
+
+app.get("/auth/twitch", passport.authenticate("twitch.js"));
 app.get(
   "/auth/twitch/callback",
-  passport.authenticate("twitch", (req, res) => {
+  passport.authenticate("twitch.js", (req, res) => {
     res.redirect("/profile");
   })
 );
