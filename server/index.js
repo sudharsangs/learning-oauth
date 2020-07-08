@@ -24,7 +24,7 @@ passport.use(
     {
       clientID: keys.FACEBOOK.clientID,
       clientSecret: keys.FACEBOOK.clientSecret,
-      callbackUrl: "/auth/facebook/callback",
+      callbackURL: "/auth/facebook/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
@@ -39,7 +39,7 @@ passport.use(
     {
       clientID: keys.AMAZON.clientID,
       clientSecret: keys.AMAZON.clientSecret,
-      callbackUrl: "/auth/amazon/callback",
+      callbackURL: "/auth/amazon/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
@@ -54,7 +54,7 @@ passport.use(
     {
       clientID: keys.GITHUB.clientID,
       clientSecret: keys.GITHUB.clientSecret,
-      callbackUrl: "/auth/github/callback",
+      callbackURLl: "/auth/github/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
@@ -69,7 +69,7 @@ passport.use(
     {
       clientID: keys.GOOGLE.clientID,
       clientSecret: keys.GOOGLE.clientSecret,
-      callbackUrl: "/auth/google/callback",
+      callbackURL: "/auth/google/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
@@ -84,7 +84,7 @@ passport.use(
     {
       clientID: keys.INSTAGRAM.clientID,
       clientSecret: keys.INSTAGRAM.clientSecret,
-      callbackUrl: "/auth/instagram/callback",
+      callbackURL: "/auth/instagram/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
@@ -99,7 +99,7 @@ passport.use(
     {
       clientID: keys.SPOTIFY.clientID,
       clientSecret: keys.SPOTIFY.clientSecret,
-      callbackUrl: "/auth/spotify/callback",
+      callbackURL: "/auth/spotify/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
@@ -114,7 +114,7 @@ passport.use(
     {
       clientID: keys.TWITCH.clientID,
       clientSecret: keys.TWITCH.clientSecret,
-      callbackUrl: "/auth/twitch/callback",
+      callbackURL: "/auth/twitch/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log(chalk.blue(JSON.stringify(profile)));
